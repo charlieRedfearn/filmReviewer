@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>Movies</h1>
+    <h5>On this page you can view movies, write reviews and like other peoples too</h5>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <select id="genre" class="form-control">
+                    <option value="">All</option>
+                    <option value="Action">Action</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Sci-fi">Sci-fi</option>
+                </select>
+
+                <label for="sort_by">Sort By:</label>
+                <select id="sort_by" class="form-control">
+                    <option value="title">Title</option>
+                    <option value="release_year">Release Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button id="filter_btn" class="btn btn-primary">Filter & Sort</button>
+            </div>
+
+            <div id="movies_list"></div>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+{% endblock %}

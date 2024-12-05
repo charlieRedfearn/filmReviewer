@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron text-center">
+    <h1>Accounts page</h1>
+    <h5>On this page you can register/login/logout of an account. You can also see reviews you have left</h5>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            {%if user.is_authenticated%}
+                <p>Welcome, {{ user.username }}!</p>
+                <a href="{{url_for('logout')}}" class="btn btn-primary">Logout</a>
+                
+                <h2>Your Reviews</h2>
+                {% if reviews %}
+                    <ul>
+                        {% for review in reviews %}
+                            <li>
+                                <strong>{{ review.film.title }}</strong> ({{ review.film.release_year }})
+                                <br>
+                                Rating: {{ review.rating }}/5
+                                <br>
+                                {{ review.content }}
+                                <br>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>You have not written any reviews yet.</p>
+                {% endif %}
+            {% else %}
+                <a href="{{url_for('login')}}" class="btn btn-primary">Login</a>
+                <a href="{{url_for('register')}}" class="btn btn-primary">Register</a>
+            {% endif %}
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+{% endblock %}
